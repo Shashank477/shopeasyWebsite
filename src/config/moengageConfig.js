@@ -28,7 +28,6 @@ export const initializeMoEngage = () => {
     moengage.initialize(config);
     console.log('MoEngage initialized successfully with config:', config);
 
-    setTimeout(() => moengage.call_web_push(), 5000);
   } catch (error) {
     console.error('Error initializing MoEngage:', error);
   }
