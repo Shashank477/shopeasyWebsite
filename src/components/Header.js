@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import moengage from "@moengage/web-sdk";
 
 const Header = () => {
   const { currentUser, logout, cart } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    	moengage.destroy_session();
+        
+
     logout();
     navigate('/login');
   };

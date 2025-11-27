@@ -1,10 +1,18 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
+import moengage from "@moengage/web-sdk";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useAuth();
 
   const handleAddToCart = () => {
+
+    moengage.track_event("AddtoCart", {
+        "ProductName": product.name, // string value
+        "ProductDescription": product.description,
+        "ProductPrice": product.price
+    });
+
     addToCart(product);
     alert('Product added to cart!');
   };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import moengage from "@moengage/web-sdk";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -17,6 +18,9 @@ const Login = () => {
       setError('Please fill in all fields');
       return;
     }
+
+    moengage.add_unique_user_id(email);
+    moengage.track_event("Login");
 
     try {
       setError('');

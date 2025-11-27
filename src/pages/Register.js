@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import moengage from "@moengage/web-sdk";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -42,6 +43,13 @@ const Register = () => {
       setError('Password must be at least 6 characters long');
       return;
     }
+
+    moengage.add_unique_user_id(formData.email);
+    moengage.add_user_name(formData.name);
+    moengage.add_email(formData.email);
+    moengage.add_mobile(formData.phone);
+    moengage.track_event("Registration");
+
 
     try {
       setError('');
