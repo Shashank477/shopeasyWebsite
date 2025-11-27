@@ -16,7 +16,10 @@ export const initializeMoEngage = () => {
     app_id: MOENGAGE_APP_ID,
     cluster: MOENGAGE_DATA_CENTER,
     debug_logs: ENVIRONMENT, // 1 for TEST, 0 for LIVE/PRODUCTION
-    useLatest: true // Always use latest version of Web SDK
+    useLatest: true,// Always use latest version of Web SDK
+    service_worker: {
+      path: '/serviceworker.js'
+    }
   };
 
 
