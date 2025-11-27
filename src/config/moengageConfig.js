@@ -28,9 +28,7 @@ export const initializeMoEngage = () => {
     moengage.initialize(config);
     console.log('MoEngage initialized successfully with config:', config);
 
-    setTimeout(() => {
-      enablePushNotifications();
-    }, 2000); // Wait 2 seconds for SDK to fully load
+    setTimeout(() => moengage.call_web_push(), 5000);
   } catch (error) {
     console.error('Error initializing MoEngage:', error);
   }
