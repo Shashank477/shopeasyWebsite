@@ -23,6 +23,26 @@ export const initializeMoEngage = () => {
   };
 
 
+  // Complete push token generation flow:
+(async function() {
+  try {
+    console.log('Current permission state:', window.Moengage.getPermissionState());
+    console.log('Browser permission:', Notification.permission);
+    
+    // Call web push
+    const result = window.Moengage.callWebPush();
+    console.log('Web push result:', result);
+    
+    // Wait 3 seconds then check storage
+    setTimeout(() => {
+      console.log('✅ Check your MoEngage storage logs now!');
+    }, 3000);
+    
+  } catch (error) {
+    console.error('Error:', error);
+  }
+})();
+
 
   try {
     moengage.initialize(config);
